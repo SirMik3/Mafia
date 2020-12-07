@@ -4,7 +4,7 @@
 using namespace std;
 
 int main(){
-	int karma = 10;
+	
 	int numofplay;
 	bool mafia;
 	int killed;
