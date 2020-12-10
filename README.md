@@ -11,3 +11,5 @@ same thing with the russian verson.
 The russian version has a "ru" at the end
 
 p.s. I would highly apriciate if you star this project
+
+My friend SilentSnake39 is also developing the multiplayer version!
