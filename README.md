@@ -13,3 +13,5 @@ The russian version has a "ru" at the end
 p.s. I would highly apriciate if you star this project
 
 My friend SilentSnake39 is also developing the multiplayer version!
+
+https://github.com/SirMik3/Mafia-Multiplayer-is-not-finished-
