@@ -14,6 +14,6 @@ p.s. I would highly apriciate if you star this project
 
 My friend SilentSnake39 is also developing the multiplayer version!
 
-https://github.com/SirMik3/Mafia-Multiplayer-is-not-finished-
+https://github.com/SilentSnake39/Mafia-Single-Player-ENG-RUS-
 
 and of course if you can star SilentSnake39 that would be great
