@@ -4,7 +4,6 @@
 using namespace std;
 
 int main(){
-
 	int numofplay;
 	bool mafia;
 	int killed;
@@ -43,6 +42,7 @@ int sus = 0;
 	}
 	usleep(1000000);
 while (gameend == false){
+	sus = 0;
 	cout << "City goes to bed.\n";
 		usleep(1000000);
 	if (mafia){
@@ -86,7 +86,7 @@ int y;
 	}
 
 				for (int y = 1; y <= numofplay; y++){
-					int yrand = rand () % 3 + 0;
+					int yrand = rand () % 2 + 0;
 					if (yrand == 1 || yrand == 2){
 						cout << "player " << y << " has an alibi.\n";
 					} else {
@@ -95,8 +95,15 @@ int y;
 					}
 				}
 	cout << username << ", remember only " << sus << " people are sus, so please don't vote a person with alibi.\n";
+	if (doctor){
+		if (doctorlive){
+			cout << "vote from 1 to " << numofplay << "\n";
+		cin >> vote;
+	}
+	} else {
 	cout << "vote from 1 to " << numofplay << "\n";
 		cin >> vote;
+	}
 			if (vote > numofplay){
 				cout << "Sorry, voting a number more than the number of people alive means you skip. \n";
 			} else if (vote < 0){
@@ -106,6 +113,8 @@ int y;
 			numvote = rand () % numofplay + 0;
 		mafianum = rand () % sus + 0;
 		doctornum = rand () % numofplay + 0;
+
+
 		if (numvote > numofplay / 2 && vote == mafianum){
 			cout << "mafia was killed. The city wins!!!\n";
 			gameend = true;
@@ -120,7 +129,7 @@ int y;
 		} else {
 			cout << "no one died!!! because no one was voted out!!!\n";
 		}
-	
+
 	if (numofplay < 2){
 		cout << "Mafia wins! \n";
 		gameend = true;
