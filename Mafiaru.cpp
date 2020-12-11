@@ -2,17 +2,21 @@
 #include <stdlib.h> 
 #include <iostream>
 using namespace std;
+int score = 0;
+string username;
+bool first = true;
 
 int main(){
-	
 	int numofplay;
 	bool mafia;
+	bool mafiawin;
 	int killed;
-	int gameend = 0;
+	bool gameend = false;
 	bool doctor;
-		string username;
-	cout << "Это мафия. Пожалуста, напишите своё имя: ";
-	cin >> username;
+		if (first){
+	std::cout << "Это мафия. Пожалуста, напишите своё имя: ";
+	std::cin >> username;
+		}
 	cout << "\n";
 	cout << "Сколько людей играют? ";
 	cin >> numofplay;
@@ -32,7 +36,7 @@ int sus = 0;
 		cout << "Вы - мафия.\n";
 	} else {
 		mafia = false;
-		cout << "Вы - не мафия.\n";
+		cout << "Вы -  не мафия.\n";
 		if (z == 1){
 			doctor = true;
 			cout << "Вы- доктор.\n";
@@ -42,7 +46,8 @@ int sus = 0;
 		}
 	}
 	usleep(1000000);
-while (gameend == 0){
+while (gameend == false){
+	sus = 0;
 	cout << "Город ложится спать.\n";
 		usleep(1000000);
 	if (mafia){
@@ -73,7 +78,19 @@ int y;
 		cout << "Кого-то убили!\n";
 	}
 }
-				for (int y; y <= numofplay; y++){
+	
+	if (numofplay < 2){
+		cout << "Мафия выиграла! \n";
+		gameend = true;
+		break;
+	} 
+	if (numofplay == 2){
+		cout << "Мафия выиграла! \n";
+		gameend = true;
+		break;
+	}
+
+				for (int y = 1; y <= numofplay; y++){
 					int yrand = rand () % 2 + 0;
 					if (yrand == 1 || yrand == 2){
 						cout << "У игрока " << y << " есть алиби.\n";
@@ -82,27 +99,31 @@ int y;
 						sus++;
 					}
 				}
-	cout << "Помните, только у " << sus << " игрока/ов нет алиби.\n";
+	cout << username << ", Помните, только у " << sus << " игрока/ов нет алиби.\n";
 	if (doctor){
 		if (doctorlive){
-	cout << "Голосуйте от 1 до " << numofplay << "\n";
+			cout << "Голосуйте от 1 до " << numofplay << "\n";
 		cin >> vote;
-		}
+	}
 	} else {
 	cout << "Голосуйте от 1 до " << numofplay << "\n";
-		cin >> vote; 
+		cin >> vote;
 	}
 			if (vote > numofplay){
 				cout << "Вы не проголосовали.\n";
 			} else if (vote < 0){
 				cout << "Вы не проголосовали.\n";
 			}
-	numvote = rand () % numofplay + 0;
+
+			numvote = rand () % numofplay + 0;
 		mafianum = rand () % sus + 0;
 		doctornum = rand () % numofplay + 0;
+
+
 		if (numvote > numofplay / 2 && vote == mafianum){
 			cout << "Мафию убили. Город выграл!!!\n";
-			gameend++;
+			mafiawin = false;
+			gameend = true;
 		} else if (numvote > numofplay / 2 && vote == doctornum) {
 			doctorlive = false;
 			cout << "Доктора убили.\n";
@@ -114,15 +135,39 @@ int y;
 		} else {
 			cout << "Никого не убили.\n";
 		}
-	usleep(1000000);
+
 	if (numofplay < 2){
 		cout << "Мафия выиграла! \n";
-		gameend++;
+		gameend = true;
+		mafiawin = true;
+		break;
 	} 
 	if (numofplay == 2){
 		cout << "Мафия выиграла! \n";
-		gameend++;
+		gameend = true;
+		mafiawin = true;
+		break;
 	}
-
+   }
+   if (mafia){
+   		if (mafiawin){
+   			score++;
+   		} else {
+   			score--;
+   		}
+   } else {
+   	   	if (mafiawin){
+   			score--;
+   		} else {
+   			score++;
+   		}
+   }
+   cout << "У Вас" << score << " очко/в/а\n";
+   string yn;
+   cout << "Создать новую игру? Д/Н\n";
+   cin >> yn;
+   if (yn == "Д" || yn == "д"){
+   	first = false;
+   		main();
+   }
  }
-}
