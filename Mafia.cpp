@@ -73,9 +73,11 @@ int y;
  } else {
 	if (y == killed) {
 		cout << "no one died!!!\n";
+		//savenum++;
 	} else {
 		numofplay--;
 		cout << "someone died!!!\n";
+		//killnum++;
 	}
 }
 	
@@ -134,6 +136,7 @@ int y;
 			cout << "someone died because you voted him/her out.\n";
 		} else {
 			cout << "no one died!!! because no one was voted out!!!\n";
+		//	crewnum++;
 		}
 
 	if (numofplay < 2){
@@ -151,7 +154,7 @@ int y;
    }
    if (mafia){
    		if (mafiawin){
-   			score++;
+   			score = score + rand() % 5 + 1;
    		} else {
    			score--;
    		}
@@ -159,9 +162,9 @@ int y;
    	   	if (mafiawin){
    			score--;
    		} else {
-   			score++;
+   			score = score + rand() % 5 + 1;
    		}
-   }
+   	}
    cout << "Your score is: " << score << "\n";
    string yn;
    cout << "Do you want to play again? Y/N\n";
@@ -169,5 +172,5 @@ int y;
    if (yn == "Y" || yn == "y"){
    	first = false;
    		main();
-   }
- }
+  }
+}
