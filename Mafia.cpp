@@ -86,7 +86,7 @@ int y;
 	}
 
 				for (int y = 1; y <= numofplay; y++){
-					int yrand = rand () % 2 + 0;
+					int yrand = rand () % 3 + 0;
 					if (yrand == 1 || yrand == 2){
 						cout << "player " << y << " has an alibi.\n";
 					} else {
