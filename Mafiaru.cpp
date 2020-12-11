@@ -83,8 +83,15 @@ int y;
 					}
 				}
 	cout << "Помните, только у " << sus << " игрока/ов нет алиби.\n";
+	if (doctor){
+		if (doctorlive){
+	cout << "Голосуйте от 1 до " << numofplay << "\n";
+		cin >> vote;
+		}
+	} else {
 	cout << "Голосуйте от 1 до " << numofplay << "\n";
 		cin >> vote; 
+	}
 			if (vote > numofplay){
 				cout << "Вы не проголосовали.\n";
 			} else if (vote < 0){
