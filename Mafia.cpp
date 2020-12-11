@@ -2,16 +2,21 @@
 #include <stdlib.h> 
 #include <iostream>
 using namespace std;
+int score = 0;
+string username;
+bool first = true;
 
 int main(){
 	int numofplay;
 	bool mafia;
+	bool mafiawin;
 	int killed;
 	bool gameend = false;
 	bool doctor;
-		string username;
-	cout << "This is Mafia. Please chose your username: ";
-	cin >> username;
+		if (first){
+	std::cout << "This is Mafia. Please chose your username: ";
+	std::cin >> username;
+		}
 	cout << "\n";
 	cout << "How many of you are playing? ";
 	cin >> numofplay;
@@ -117,6 +122,7 @@ int y;
 
 		if (numvote > numofplay / 2 && vote == mafianum){
 			cout << "mafia was killed. The city wins!!!\n";
+			mafiawin = false;
 			gameend = true;
 		} else if (numvote > numofplay / 2 && vote == doctornum) {
 			doctorlive = false;
@@ -133,12 +139,35 @@ int y;
 	if (numofplay < 2){
 		cout << "Mafia wins! \n";
 		gameend = true;
+		mafiawin = true;
 		break;
 	} 
 	if (numofplay == 2){
 		cout << "Mafia wins! \n";
 		gameend = true;
+		mafiawin = true;
 		break;
 	}
+   }
+   if (mafia){
+   		if (mafiawin){
+   			score++;
+   		} else {
+   			score--;
+   		}
+   } else {
+   	   	if (mafiawin){
+   			score--;
+   		} else {
+   			score++;
+   		}
+   }
+   cout << "Your score is: " << score << "\n";
+   string yn;
+   cout << "Do you want to play again? Y/N\n";
+   cin >> yn;
+   if (yn == "Y" || yn == "y"){
+   	first = false;
+   		main();
    }
  }
