@@ -9,6 +9,8 @@ bool first = true;
 int main(){
 	int numofplay;
 	bool mafia;
+	bool detective;
+	bool detectivelive = true;
 	bool mafiawin;
 	int killed;
 	bool gameend = false;
@@ -25,10 +27,12 @@ int main(){
 cout << "Starting...\n";
 int x = rand () % numofplay + 0;
 int z = rand () % numofplay + 0;
+int c = rand () % numofplay + 0;
 int vote = 1;
 int numvote = 0;
 int mafianum = 1;
 int doctornum = 1;
+int detectivenum = 1;
 bool doctorlive = true;
 int sus = 0;
 	if (x == 1) {
@@ -43,6 +47,13 @@ int sus = 0;
 		} else {
 			doctor = false;
 			cout << "Your not doctor.\n";
+				if (c == 1){
+					detective = true;
+					cout << "Your detective.\n";
+				} else {
+					detective = false;
+					cout << "your not detective.\n";
+				}
 		}
 	}
 	usleep(1000000);
@@ -65,6 +76,18 @@ int y;
  y = rand () % numofplay + 0;
  }
 }
+int l;
+if (detectivelive){
+	if (detective){
+	  cout << "Who do you think is mafia? Choose from 1 to " << numofplay << "\n";
+	  cin >> l;
+} else {
+	l = rand () % numofplay + 0;
+  }
+}
+
+int g = rand () % numofplay + 0;
+
 	cout << "City wakes up.\n";
  if (killed > numofplay) {
 
@@ -80,15 +103,25 @@ int y;
 		//killnum++;
 	}
 }
-	
+	if (g == l){
+		cout << "The detective found the mafia! The city wins!\n";
+		gameend = true;
+		break;
+	} else {
+		cout << "The detective killed an inoccent!\n";
+		numofplay--;
+	}
+
 	if (numofplay < 2){
 		cout << "Mafia wins! \n";
 		gameend = true;
+		mafiawin = true;
 		break;
 	} 
 	if (numofplay == 2){
 		cout << "Mafia wins! \n";
 		gameend = true;
+		mafiawin = true;
 		break;
 	}
 
@@ -106,9 +139,14 @@ int y;
 		if (doctorlive){
 			cout << "vote from 1 to " << numofplay << "\n";
 		cin >> vote;
-	}
-	} else {
+	 }
+	} else if (detective){
+		if (detectivelive){
 	cout << "vote from 1 to " << numofplay << "\n";
+		cin >> vote;
+	 }
+	} else {
+ 		cout << "vote from 1 to " << numofplay << "\n";
 		cin >> vote;
 	}
 			if (vote > numofplay){
@@ -120,7 +158,7 @@ int y;
 			numvote = rand () % numofplay + 0;
 		mafianum = rand () % sus + 0;
 		doctornum = rand () % numofplay + 0;
-
+		detectivenum = rand () % numofplay + 0;
 
 		if (numvote > numofplay / 2 && vote == mafianum){
 			cout << "mafia was killed. The city wins!!!\n";
@@ -134,6 +172,10 @@ int y;
 			cout << "Mafia wasn't voted out. \n";
 			numofplay--;
 			cout << "someone died because you voted him/her out.\n";
+		} else if (numvote > numofplay / 2 && vote == doctornum) {
+			detectivelive = false;
+			cout << "The detective died.\n";
+			numofplay--;
 		} else {
 			cout << "no one died!!! because no one was voted out!!!\n";
 		//	crewnum++;
