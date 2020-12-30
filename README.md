@@ -26,7 +26,6 @@ run
 - git@github.com:SirMik3/Mafia.git
 - cd Mafia
 - g++ Mafia.cpp -o Mafia
-- ./Mafia
 
 if you have a laptop/computer:
 
@@ -34,4 +33,6 @@ run
 - git@github.com:SirMik3/Mafia.git
 - cd Mafia
 - g++ Mafia.cpp -o Mafia
+
+after you installed and compieled the program you have to run:
 - ./Mafia
