@@ -28,7 +28,7 @@ run
 - g++ Mafia.cpp -o Mafia
 - ./Mafia
 
-if you have a laptop:
+if you have a laptop/computer:
 
 run
 - git@github.com:SirMik3/Mafia.git
