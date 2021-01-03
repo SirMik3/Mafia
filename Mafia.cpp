@@ -15,6 +15,8 @@ int main(){
 	int killed;
 	bool gameend = false;
 	bool doctor;
+	bool jester;
+	bool jesterlive = true;
 		if (first){
 	std::cout << "This is Mafia. Please chose your username: ";
 	std::cin >> username;
@@ -28,21 +30,27 @@ cout << "Starting...\n";
 int x = rand () % numofplay + 0;
 int z = rand () % numofplay + 0;
 int c = rand () % numofplay + 0;
+int r = rand () % numofplay + 0;
 int vote = 1;
 int numvote = 0;
 int mafianum = 1;
 int doctornum = 1;
 int detectivenum = 1;
 bool doctorlive = true;
+int jesternum = 1;
+bool jesterwin;
 int sus = 0;
 	if (x == 1) {
 		mafia = true;
+		doctor = false;
+		detective = false;
 		cout << "Your Mafia\n";
 	} else {
 		mafia = false;
 		cout << "Your not Mafia\n";
 		if (z == 1){
 			doctor = true;
+			detective = false;
 			cout << "Your doctor.\n";
 		} else {
 			doctor = false;
@@ -53,6 +61,13 @@ int sus = 0;
 				} else {
 					detective = false;
 					cout << "your not detective.\n";
+						if (r == 1){
+							jester = true;
+							cout << "your the jester.\n";
+						} else {
+							jester = false;
+							cout << "your not the jester.\n";
+						}
 				}
 		}
 	}
@@ -86,8 +101,21 @@ if (detectivelive){
   }
 }
 
-int g = rand () % numofplay + 0;
+int jcount;
+if (jesterlive){
+	if (jester){
+	  cout << "Tell us a sus player you will be with. Choose from 1 to " << numofplay << "\n";
+	  cin >> jcount;
+} else {
+	jcount = rand () % numofplay + 0;
+  }
+}
 
+
+int g = rand () % numofplay + 0;
+int jesterdie = rand () % numofplay + 0;
+int doctordie = rand () % numofplay + 0;
+int detectivedie = rand () % numofplay + 0;
 	cout << "City wakes up.\n";
  if (killed > numofplay) {
 
@@ -100,6 +128,23 @@ int g = rand () % numofplay + 0;
 	} else {
 		numofplay--;
 		cout << "someone died!!!\n";
+			if (jesterdie == 1){
+				cout << "The jester died.\n";
+				gameend = true;
+				jesterlive = false;
+				jesterwin = true;
+				break;
+			} else {
+				if (doctordie == 1){
+				cout << "The doctor died.\n";
+				doctorlive = false;
+				} else {
+					if (detectivedie == 1){
+						cout << "The detective died.\n";
+						detectivelive = false;
+					}
+				}
+			}
 		//killnum++;
 	}
 }
@@ -134,7 +179,8 @@ int g = rand () % numofplay + 0;
 						sus++;
 					}
 				}
-	cout << username << ", remember only " << sus << " people are sus, so please don't vote a person with alibi.\n";
+						jesternum = rand () % numofplay + 0;
+	cout << username << ", remember only " << sus << " people are sus, so please don't vote a person with alibi." << "also, the numbers " << jcount << " and " << jesternum << "are really sus.\n";
 	if (doctor){
 		if (doctorlive){
 			cout << "vote from 1 to " << numofplay << "\n";
@@ -159,6 +205,7 @@ int g = rand () % numofplay + 0;
 		mafianum = rand () % sus + 0;
 		doctornum = rand () % numofplay + 0;
 		detectivenum = rand () % numofplay + 0;
+	//	jesternum = rand () % numofplay + 0;
 
 		if (numvote > numofplay / 2 && vote == mafianum){
 			cout << "mafia was killed. The city wins!!!\n";
@@ -176,9 +223,15 @@ int g = rand () % numofplay + 0;
 			detectivelive = false;
 			cout << "The detective died.\n";
 			numofplay--;
+		} else if (numvote > numofplay / 2 && vote == jesternum){
+				cout << "The jester died.\n";
+				cout << "The jester won! \n";
+				gameend = true;
+				jesterlive = false;
+				jesterwin = true;
+				break;
 		} else {
-			cout << "no one died!!! because no one was voted out!!!\n";
-		//	crewnum++;
+				cout << "no one died!!! because no one was voted out!!!\n";
 		}
 
 	if (numofplay < 2){
@@ -196,7 +249,8 @@ int g = rand () % numofplay + 0;
    }
    if (mafia){
    		if (mafiawin){
-   			score = score + rand() % 5 + 1;
+   			jesterwin = false;
+   			score = score + rand () % 5 + 1;
    		} else {
    			score--;
    		}
@@ -204,7 +258,13 @@ int g = rand () % numofplay + 0;
    	   	if (mafiawin){
    			score--;
    		} else {
-   			score = score + rand() % 5 + 1;
+   			score = score + rand () % 5 + 1;
+   			jesterwin = false;
+   		}
+   	}
+   	if (jester){
+   		if (jesterwin){
+   			score = score + rand () % 5 + 1;
    		}
    	}
    cout << "Your score is: " << score << "\n";
