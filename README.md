@@ -22,17 +22,24 @@ https://github.com/ish-app/ish
 download ish. 
 
 run
-- apk add g++
-- git@github.com:SirMik3/Mafia.git
-- cd Mafia
-- g++ Mafia.cpp -o Mafia
+> apk add g++
+
+> git@github.com:SirMik3/Mafia.git
+
+> cd Mafia
+
+> g++ Mafia.cpp -o Mafia
+
 
 if you have a laptop/computer:
 
 run
-- git@github.com:SirMik3/Mafia.git
-- cd Mafia
-- g++ Mafia.cpp -o Mafia
+> git@github.com:SirMik3/Mafia.git
+
+> cd Mafia
+
+> g++ Mafia.cpp -o Mafia
+
 
 after you installed and compieled the program you have to run:
-- ./Mafia
+> ./Mafia
