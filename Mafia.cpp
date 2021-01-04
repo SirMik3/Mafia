@@ -179,8 +179,11 @@ int detectivedie = rand () % numofplay + 0;
 						sus++;
 					}
 				}
-						jesternum = rand () % numofplay + 0;
-	cout << username << ", remember only " << sus << " people are sus, so please don't vote a person with alibi." << "also, the numbers " << jcount << " and " << jesternum << "are really sus.\n";
+						jesternum = jcount + rand () % numofplay + 0;
+							while (jesternum < numofplay){
+								jesternum--;
+							}
+	cout << username << ", remember only " << sus << " people are sus, so please don't vote a person with alibi.";
 	if (doctor){
 		if (doctorlive){
 			cout << "vote from 1 to " << numofplay << "\n";
