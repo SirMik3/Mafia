@@ -19,7 +19,7 @@ Don't have a computer/laptop? Don't worry! you can use:
 
 https://github.com/ish-app/ish
 
-download ish. 
+download ish (on the appstore). 
 
 run
 > apk add g++
