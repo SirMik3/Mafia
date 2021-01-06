@@ -7,8 +7,6 @@ ENJOY!!!
 
 The russian version has a "ru" at the end
 
-p.s. I would highly apriciate if you star this project
-
 My friend SilentSnake39 is also developing the multiplayer version!
 
 https://github.com/SilentSnake39/Mafia-Single-Player-ENG-RUS-
@@ -43,3 +41,5 @@ run
 
 after you installed and compieled the program you have to run:
 > ./Mafia
+
+p.s. I would highly apriciate if you star this project
