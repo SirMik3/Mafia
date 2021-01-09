@@ -16,6 +16,7 @@ int main(){
 	bool gameend = false;
 	bool doctor;
 	bool jester;
+	bool mayor;
 	bool jesterlive = true;
 		if (first){
 	std::cout << "This is Mafia. Please chose your username: ";
@@ -28,18 +29,18 @@ int main(){
 	usleep(1000000);
 cout << "Starting...\n";
 int x = rand () % numofplay + 0;
-int z = rand () % numofplay + 0;
-int c = rand () % numofplay + 0;
-int r = rand () % numofplay + 0;
 int vote = 1;
 int numvote = 0;
 int mafianum = 1;
 int doctornum = 1;
 int detectivenum = 1;
+int mayornum = 1;
+bool mayorlive = true;
 bool doctorlive = true;
 int jesternum = 1;
 bool jesterwin;
 int sus = 0;
+bool gamestart = true;
 	if (x == 1) {
 		mafia = true;
 		doctor = false;
@@ -48,31 +49,138 @@ int sus = 0;
 	} else {
 		mafia = false;
 		cout << "Your not Mafia\n";
-		if (z == 1){
-			doctor = true;
-			detective = false;
-			cout << "Your doctor.\n";
-		} else {
+	}
+	if (numofplay == 4){
+		if (x == 1) {
+			mafia = true;
 			doctor = false;
-			cout << "Your not doctor.\n";
-				if (c == 1){
-					detective = true;
-					cout << "Your detective.\n";
-				} else {
+			detective = false;
+			cout << "Your Mafia\n";
+		} else {
+			mafia = false;
+			cout << "Your not Mafia\n";
+		}
+	} else if (numofplay == 5){
+		if (x == 1) {
+			mafia = true;
+			doctor = false;
+			detective = false;
+			cout << "Your Mafia\n";
+		} else {
+			mafia = false;
+			cout << "Your not Mafia\n";
+				if (x == 2){
+					doctor = true;
 					detective = false;
-					cout << "your not detective.\n";
-						if (r == 1){
+					cout << "Your doctor.\n";
+				} else {
+					doctor = false;
+					cout << "Your not doctor.\n";
+				}
+		}
+
+	} else if (numofplay == 6) {
+		if (x == 1) {
+			mafia = true;
+			doctor = false;
+			detective = false;
+			cout << "Your Mafia\n";
+		} else {
+			mafia = false;
+			cout << "Your not Mafia\n";
+				if (x == 2){
+					doctor = true;
+					detective = false;
+					cout << "Your doctor.\n";
+				} else {
+					doctor = false;
+					cout << "Your not doctor.\n";
+					if (x == 3){
+						detective = true;
+						cout << "Your detective.\n";
+					} else {
+						detective = false;
+						cout << "your not detective.\n";
+					}
+				}
+		}
+	} else if (numofplay == 7){
+		if (x == 1) {
+			mafia = true;
+			doctor = false;
+			detective = false;
+			cout << "Your Mafia\n";
+		} else {
+			mafia = false;
+			cout << "Your not Mafia\n";
+				if (x == 2){
+					doctor = true;
+					detective = false;
+					cout << "Your doctor.\n";
+				} else {
+					doctor = false;
+					cout << "Your not doctor.\n";
+					if (x == 3){
+						detective = true;
+						cout << "Your detective.\n";
+					} else {
+						detective = false;
+						cout << "your not detective.\n";
+						if (x == 4){
 							jester = true;
 							cout << "your the jester.\n";
 						} else {
 							jester = false;
 							cout << "your not the jester.\n";
 						}
+					}
 				}
 		}
+	} else if (numofplay >= 8) {
+		if (x == 1) {
+			mafia = true;
+			doctor = false;
+			detective = false;
+			cout << "Your Mafia\n";
+		} else {
+			mafia = false;
+			cout << "Your not Mafia\n";
+				if (x == 2){
+					doctor = true;
+					detective = false;
+					cout << "Your doctor.\n";
+				} else {
+					doctor = false;
+					cout << "Your not doctor.\n";
+					if (x == 3){
+						detective = true;
+						cout << "Your detective.\n";
+					} else {
+						detective = false;
+						cout << "your not detective.\n";
+						if (x == 4){
+							jester = true;
+							cout << "your the jester.\n";
+						} else {
+							jester = false;
+							cout << "your not the jester.\n";
+							if (x == 5){
+								mayor = true;
+								cout << "your the mayor.\n";
+							} else {
+								mayor = false;
+								cout << "your not the mayor.\n";
+							}
+						}
+					}
+				}
+		}
+	} else if (numofplay < 4) {
+		cout << "there are not enough people to play.\n";
+		gamestart = false;
 	}
 	usleep(1000000);
-while (gameend == false){
+while (gameend == false && gamestart == true){
 	sus = 0;
 	cout << "City goes to bed.\n";
 		usleep(1000000);
@@ -116,6 +224,7 @@ int g = rand () % numofplay + 0;
 int jesterdie = rand () % numofplay + 0;
 int doctordie = rand () % numofplay + 0;
 int detectivedie = rand () % numofplay + 0;
+int mayordie = rand () % numofplay + 0;
 	cout << "City wakes up.\n";
  if (killed > numofplay) {
 
@@ -142,6 +251,13 @@ int detectivedie = rand () % numofplay + 0;
 					if (detectivedie == 1){
 						cout << "The detective died.\n";
 						detectivelive = false;
+					} else {
+						if (mayordie == 1){
+							if (!detectivelive){
+								cout << "the mayor died.\n";
+								mayorlive = false;
+							}
+						}
 					}
 				}
 			}
@@ -183,7 +299,9 @@ int detectivedie = rand () % numofplay + 0;
 							while (jesternum < numofplay){
 								jesternum--;
 							}
+if (!mayor){
 	cout << username << ", remember only " << sus << " people are sus, so please don't vote a person with alibi.";
+}
 	if (doctor){
 		if (doctorlive){
 			cout << "vote from 1 to " << numofplay << "\n";
@@ -208,8 +326,15 @@ int detectivedie = rand () % numofplay + 0;
 		mafianum = rand () % sus + 0;
 		doctornum = rand () % numofplay + 0;
 		detectivenum = rand () % numofplay + 0;
+		mayornum = rand () % numofplay + 0;
 	//	jesternum = rand () % numofplay + 0;
-
+if (mayorlive){
+	if (mayor){
+		cout << "The doctors number is " << doctornum << "\n";
+		cout << "The detectives number is " << detectivenum << "\n";
+		cout << "And your number is " << mayornum << "\n";
+	}
+}
 		if (numvote > numofplay / 2 && vote == mafianum){
 			cout << "mafia was killed. The city wins!!!\n";
 			mafiawin = false;
@@ -233,8 +358,16 @@ int detectivedie = rand () % numofplay + 0;
 				jesterlive = false;
 				jesterwin = true;
 				break;
+		} else if (numvote > numofplay / 2 && vote == mayornum){
+			if (!detectivelive){
+				mayorlive = false;
+				cout << "The mayor died.\n";
+				numofplay--;
+			} else {
+				cout << "no one died!!! because no one was voted out!!!\n";	
+			}
 		} else {
-				cout << "no one died!!! because no one was voted out!!!\n";
+			cout << "no one died!!! because no one was voted out!!!\n";
 		}
 
 	if (numofplay < 2){
