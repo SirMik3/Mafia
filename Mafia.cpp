@@ -302,6 +302,19 @@ int mayordie = rand () % numofplay + 0;
 if (!mayor){
 	cout << username << ", remember only " << sus << " people are sus, so please don't vote a person with alibi.";
 }
+			numvote = rand () % numofplay + 0;
+		mafianum = rand () % sus + 0;
+		doctornum = rand () % numofplay + 0;
+		detectivenum = rand () % numofplay + 0;
+		mayornum = rand () % numofplay + 0;
+	//	jesternum = rand () % numofplay + 0;
+if (mayorlive){
+	if (mayor){
+		cout << "The doctors number is " << doctornum << "\n";
+		cout << "The detectives number is " << detectivenum << "\n";
+		cout << "And your number is " << mayornum << "\n";
+	}
+}
 	if (doctor){
 		if (doctorlive){
 			cout << "vote from 1 to " << numofplay << "\n";
@@ -322,19 +335,6 @@ if (!mayor){
 				cout << "Sorry, voting a number less than zero means you skip. \n";
 			}
 
-			numvote = rand () % numofplay + 0;
-		mafianum = rand () % sus + 0;
-		doctornum = rand () % numofplay + 0;
-		detectivenum = rand () % numofplay + 0;
-		mayornum = rand () % numofplay + 0;
-	//	jesternum = rand () % numofplay + 0;
-if (mayorlive){
-	if (mayor){
-		cout << "The doctors number is " << doctornum << "\n";
-		cout << "The detectives number is " << detectivenum << "\n";
-		cout << "And your number is " << mayornum << "\n";
-	}
-}
 		if (numvote > numofplay / 2 && vote == mafianum){
 			cout << "mafia was killed. The city wins!!!\n";
 			mafiawin = false;
