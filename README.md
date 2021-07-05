@@ -43,3 +43,6 @@ after you installed and compieled the program you have to run:
 > ./Mafia
 
 p.s. I would highly apriciate if you star this project
+
+# Updates 
+**A new release soon in Telegram messenger!!**
