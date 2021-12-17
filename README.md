@@ -20,27 +20,28 @@ https://github.com/ish-app/ish
 download ish (on the appstore). 
 
 run
-> apk add g++
+<pre><code>apk add g++
 
-> git@github.com:SirMik3/Mafia.git
+git@github.com:SirMik3/Mafia.git
 
-> cd Mafia
+cd Mafia
 
-> g++ Mafia.cpp -o Mafia
+g++ Mafia.cpp -o Mafia
+</pre></code>
 
 
 if you have a laptop/computer:
 
 run
-> git@github.com:SirMik3/Mafia.git
+<pre><code>git@github.com:SirMik3/Mafia.git
 
-> cd Mafia
+cd Mafia
 
-> g++ Mafia.cpp -o Mafia
-
+g++ Mafia.cpp -o Mafia
+</pre></code>
 
 after you installed and compieled the program you have to run:
-> ./Mafia
+<pre><code>./Mafia</pre></code>
 
 p.s. I would highly apriciate if you star this project
 
